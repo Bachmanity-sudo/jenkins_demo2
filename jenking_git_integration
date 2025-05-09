@@ -2,41 +2,59 @@ pipeline{
     agent any
     environment {
         DIRECTORY_PATH= "${WORKSPACE}/big-app-folder"
-        TESTING_ENVIRONMENT = "SandBox"
-        PRODUCTION_ENVIRONMENT = "My New Environment"
+        STAGING_SERVER = "AWS_EC4_STG"
+        PRODUCTION_SERVER = "AWS_EC4"
     }
     stages{
-        stage('Build'){
+        stage('1. Build'){
             steps{
                 echo "Fetch the source code from $DIRECTORY_PATH"
-                echo "Compile the code and generate any necessary artefacts"
+                echo "MAVEN is building project . . ."
+                sleep 5
+                echo "Build Succesful!"
             }    
         }
-        stage('Test'){
+        stage('2. Unit and Integration Tests'){
             steps{
-                echo "Unit tests"
-                echo "Integration tests"
+                echo "Running Unit and Integration testing . . ."
+                sleep 5
+                echo "Unit tests succesful!"
+                echo "Integration tests Succesful!"
             }    
         } 
-        stage('Code Quality Check'){
+        stage('3. Code Analysis'){
             steps{
-                echo "Check the quality of the code"
+                echo "SonarQube is checking code quality . . ."
+                sleep 5
+                echo "Code Analysis Complete - 0.943 - Good To Go!"
+            }          
+        }
+        stage('4. Security Scan'){
+            steps{
+                echo "Bandit is scanning for vulnerabilities . . ."
+                sleep 5
+                echo "Complete - no vulnerabilities detected."
             }          
         }  
-        stage('Deploy'){
+        stage('5. Deploy to Staging server'){
             steps{
-                echo "Deploy the application to $TESTING_ENVIRONMENT"
+                echo "Deploying to staging server . . ."
+                sleep 5
+                echo "The application has been succesfully deployed to the $STAGING_SERVER"
             }          
         }  
-        stage('Approval'){
+        stage('6. Integration Tests'){
             steps{
-                sleep 10
-                echo "Approval Granted!"
+                echo "PyTest is starting Integration testing . . ."
+                sleep 5
+                echo "Complete - Passed all Integration tests."
             }          
         }  
-        stage('Deploy to Production'){
+        stage('7. Deploy to Production'){
             steps{
-                echo "Deployment started and completed to $PRODUCTION_ENVIRONMENT"
+                echo "Deploying to Production . . ."
+                sleep 5
+                echo "The application has been succesfully deployed to the $PRODUCTION_SERVER"
             }          
         }  
 
