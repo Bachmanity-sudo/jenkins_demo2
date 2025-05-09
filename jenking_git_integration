@@ -1,4 +1,4 @@
-pipeline{
+ERpipeline{
     agent any
     environment {
         DIRECTORY_PATH= "${WORKSPACE}/big-app-folder"
@@ -25,12 +25,12 @@ pipeline{
         } 
         stage('4. Test - Security Checks'){
             steps{
-                echo "Check the quality of the code"
+                echo "Check code for vulnerabilities"
             }          
         }  
-        stage('5. Deploy'){
+        stage('5. Deploy'){5. Deploy'){
             steps{
-                echo "Deploy the application to $TESTING_ENVIRONMENT"
+                echo "Deploy the application to STAGING_SERVER"
             }          
         }  
         stage('6. Approval'){
@@ -41,7 +41,7 @@ pipeline{
         }  
         stage('7. Deploy to Production'){
             steps{
-                echo "Deployment started and completed to $PRODUCTION_ENVIRONMENT"
+                echo "Deployment started and completed to PRODUCTION_SERVER AWS EC4"
             }          
         }  
 
