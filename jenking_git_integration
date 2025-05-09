@@ -1,47 +1,42 @@
-ERpipeline{
+pipeline{
     agent any
     environment {
         DIRECTORY_PATH= "${WORKSPACE}/big-app-folder"
         TESTING_ENVIRONMENT = "SandBox"
-        PRODUCTION_ENVIRONMENT = "S225149998's Environment"
+        PRODUCTION_ENVIRONMENT = "My Environment"
     }
     stages{
-        stage('1. Build'){
+        stage('Build'){
             steps{
                 echo "Fetch the source code from $DIRECTORY_PATH"
                 echo "Compile the code and generate any necessary artefacts"
             }    
         }
-        stage('2.Test - basic'){
+        stage('Test'){
             steps{
                 echo "Unit tests"
                 echo "Integration tests"
             }    
         } 
-        stage('3. Test - Code Quality Checks'){
+        stage('Code Quality Check'){
             steps{
                 echo "Check the quality of the code"
             }          
-        } 
-        stage('4. Test - Security Checks'){
+        }  
+        stage('Deploy'){
             steps{
-                echo "Check code for vulnerabilities"
+                echo "Deploy the application to $TESTING_ENVIRONMENT"
             }          
         }  
-        stage('5. Deploy'){
-            steps{
-                echo "Deploy the application to STAGING_SERVER"
-            }          
-        }  
-        stage('6. Approval'){
+        stage('Approval'){
             steps{
                 sleep 10
                 echo "Approval Granted!"
             }          
         }  
-        stage('7. Deploy to Production'){
+        stage('Deploy to Production'){
             steps{
-                echo "Deployment started and completed to PRODUCTION_SERVER AWS EC4"
+                echo "Deployment started and completed to $PRODUCTION_ENVIRONMENT"
             }          
         }  
 
