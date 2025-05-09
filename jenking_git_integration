@@ -28,7 +28,7 @@ ERpipeline{
                 echo "Check code for vulnerabilities"
             }          
         }  
-        stage('5. Deploy'){5. Deploy'){
+        stage('5. Deploy'){
             steps{
                 echo "Deploy the application to STAGING_SERVER"
             }          
