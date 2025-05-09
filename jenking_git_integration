@@ -1,0 +1,49 @@
+pipeline{
+    agent any
+    environment {
+        DIRECTORY_PATH= "${WORKSPACE}/big-app-folder"
+        TESTING_ENVIRONMENT = "SandBox"
+        PRODUCTION_ENVIRONMENT = "James Blair's Environment"
+    }
+    stages{
+        stage('1. Build'){
+            steps{
+                echo "Fetch the source code from $DIRECTORY_PATH"
+                echo "Compile the code and generate any necessary artefacts"
+            }    
+        }
+        stage('2.Test - basic'){
+            steps{
+                echo "Unit tests"
+                echo "Integration tests"
+            }    
+        } 
+        stage('3. Test - Code Quality Checks'){
+            steps{
+                echo "Check the quality of the code"
+            }          
+        } 
+        stage('4. Test - Security Checks'){
+            steps{
+                echo "Check the quality of the code"
+            }          
+        }  
+        stage('5. Deploy'){
+            steps{
+                echo "Deploy the application to $TESTING_ENVIRONMENT"
+            }          
+        }  
+        stage('6. Approval'){
+            steps{
+                sleep 10
+                echo "Approval Granted!"
+            }          
+        }  
+        stage('7. Deploy to Production'){
+            steps{
+                echo "Deployment started and completed to $PRODUCTION_ENVIRONMENT"
+            }          
+        }  
+
+    }
+}
