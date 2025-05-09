@@ -3,7 +3,7 @@ pipeline{
     environment {
         DIRECTORY_PATH= "${WORKSPACE}/big-app-folder"
         TESTING_ENVIRONMENT = "SandBox"
-        PRODUCTION_ENVIRONMENT = "James Blair's Environment"
+        PRODUCTION_ENVIRONMENT = "S225149998's Environment"
     }
     stages{
         stage('1. Build'){
