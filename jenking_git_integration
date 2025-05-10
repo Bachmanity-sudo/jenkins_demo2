@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        DIRECTORY_PATH= "${WORKSPACE}/big-app-folder-test4testbiggertest"
+        DIRECTORY_PATH= "${WORKSPACE}/big-app-folder-test4testbiggxxxt"
         STAGING_SERVER = "AWS_EC4_STG"
         PRODUCTION_SERVER = "AWS_EC4"
     }
